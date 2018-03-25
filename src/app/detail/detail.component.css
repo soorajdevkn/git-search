@@ -1,0 +1,9 @@
+.tab a:hover{
+    background-color: rgba(246,178,181,0.2) !important;
+    outline: none !important;
+}
+.tab .active {
+    background-color: rgba(246,178,181,0.2) !important;
+    outline: none !important;
+    border-bottom: 1px solid salmon;
+}

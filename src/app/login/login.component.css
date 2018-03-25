@@ -1,0 +1,9 @@
+.container{
+    padding:10vh 20vw;
+}
+.form-group{
+    width: 50%;
+}
+h1{
+    font-family: 'Dosis', sans-serif;
+}

@@ -1,0 +1,50 @@
+<div class="container">
+  <br/>
+  <div class="card" *ngIf="profile!=null">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <img [src]="profile.image" width="250px" class="img img-responsive rounded" />
+          <h3>
+            <b>{{profile.name}}</b>
+          </h3>
+          <h4 style="color:gray;margin-top:-15px;">{{profile.login}}</h4>
+          <hr/>
+          <label *ngIf="profile.location!=null">
+            <i class="fa fa-map-marker"></i> &nbsp;&nbsp;{{profile.location}}</label>
+          <br *ngIf="profile.location!=null" />
+          <i class="fa fa-envelope" *ngIf="profile.email!=null"></i>
+          <a *ngIf="profile.email!=null" href="'mailto:'{{profile.email}}">{{profile.email}}</a>
+          <br *ngIf="profile.email!=null" />
+          <label *ngIf="profile.company!=null">
+            <i class="fa fa-building"></i> {{profile.company}}</label>
+          <br/>
+        </div>
+        <div class="col-sm-9">
+          <div class="card">
+            <ul class="tabs ">
+              <li class="tab">
+                <a href="javascript:;" [class.active]="repoTab" (click)="repoTab = true;followersTab = false">Repositories</a>
+              </li>
+              <li class="tab active">
+                <a [class.active]="followersTab" (click)="followersTab = true;repoTab = false" href="javascript:;">Followers</a>
+              </li>
+            </ul>
+            <div class="card-body">
+              <div class="col s12" *ngIf="repoTab">
+                <label class="col-sm-3" *ngFor="let r of repo">
+                  {{r.name}}
+                </label>
+              </div>
+              <div *ngIf="followersTab" class="col s12">
+                <label class="col-md-3 col-sm-6" *ngFor="let follower of followers">
+                  {{follower.name}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

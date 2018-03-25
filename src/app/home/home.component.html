@@ -1,0 +1,50 @@
+<br/>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form class="row" (submit)="getUsersByUsearname(searchString)">
+        <div class="col-md-11">
+          <input type="text" name="search" [(ngModel)]="searchString" #ctrl="ngModel" placeholder="Search by username" class="form-control" />
+        </div>
+        <div class="col-md-1" align="center">
+          <button class="btn btn-success btn-sm rounded" type="submit" style="width:50px;height:50px">
+            <i style="margin-left:-8px;font-size:2em" class="fa fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br/>
+  <div *ngFor="let user of userDatas">
+    <div class="card"  *ngIf="user!=null">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-4" align="center">
+            <br/>
+            <img [src]="user.image" class="img img-responsive rounded" />
+            <br/>
+            <br/>
+            <label>
+              <a [routerLink]="['/detail/'+user.login]">{{user.name}}</a>
+            </label>
+            <br/>
+            <label>{{user.email}}</label>
+          </div>
+          <div class="col-sm-8">
+            <label>
+              <b>Followers</b>
+            </label>
+            <br/>
+            <div class="row">
+
+              <label class="col-md-3 col-sm-6" *ngFor="let follower of user.followers">
+                <a *ngIf="follower!=null" [routerLink]="['/detail/'+follower.login]">{{follower.name}}</a>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br/>
+  </div>
+</div>
